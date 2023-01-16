@@ -54,7 +54,7 @@ namespace DiscordRemovalTool
         private void btnUninstall_Click(object sender, EventArgs e)
         {
             ChangeStatus("Checking if Discord is running...");
-            Process[] DiscordProcess = Process.GetProcessesByName("Discord.exe");
+            Process[] DiscordProcess = Process.GetProcessesByName("Discord");
             if (DiscordProcess.Length > 0)
             {
                 progressBar1.Value = 5;
@@ -98,7 +98,22 @@ namespace DiscordRemovalTool
                             {
                                 if (progressBar1.Value < 35) { progressBar1.Value++; }
                                 ChangeStatus($"Deleting {file}...");
-                                File.Delete(file);
+                                try
+                                {
+                                    File.Delete(file);
+                                }
+                                catch (DirectoryNotFoundException ex)
+                                {
+                                    ChangeStatus(ex.Message);
+                                }
+                                catch (FileNotFoundException ex)
+                                {
+                                    ChangeStatus(ex.Message);
+                                }
+                                catch (IOException ex)
+                                {
+                                    ChangeStatus(ex.Message);
+                                }
                             }
                             ChangeStatus($"Deleting {dir}");
                         }
@@ -106,8 +121,23 @@ namespace DiscordRemovalTool
                     else
                     {
                         ChangeStatus($"Deleting {dirPath} [Empty Directory]");
-                        Directory.Delete(dirPath, true);
-                        
+                        try
+                        {
+                            Directory.Delete(dirPath, true);
+                        }
+                        catch (DirectoryNotFoundException ex)
+                        {
+                            ChangeStatus(ex.Message);
+                        }
+                        catch (FileNotFoundException ex)
+                        {
+                            ChangeStatus(ex.Message);
+                        }
+                        catch (IOException ex)
+                        {
+                            ChangeStatus(ex.Message);
+                        }
+
                     }
                     if (files.Length > 0)
                     {
@@ -115,13 +145,43 @@ namespace DiscordRemovalTool
                         {
                             if (progressBar1.Value < 35) { progressBar1.Value++; }
                             ChangeStatus($"Deleting {file}...");
-                            File.Delete(file);
+                            try
+                            {
+                                File.Delete(file);
+                            }
+                            catch (DirectoryNotFoundException ex)
+                            {
+                                ChangeStatus(ex.Message);
+                            }
+                            catch (FileNotFoundException ex)
+                            {
+                                ChangeStatus(ex.Message);
+                            }
+                            catch (IOException ex)
+                            {
+                                ChangeStatus(ex.Message);
+                            }
                         }
                         ChangeStatus($"Deleting {dirPath}");
                     } else
                     {
                         ChangeStatus($"Deleting {dirPath} [Empty Directory]");
-                        Directory.Delete(dirPath, true);
+                        try
+                        {
+                            Directory.Delete(dirPath, true);
+                        }
+                        catch (DirectoryNotFoundException ex)
+                        {
+                            ChangeStatus(ex.Message);
+                        }
+                        catch (FileNotFoundException ex)
+                        {
+                            ChangeStatus(ex.Message);
+                        }
+                        catch (IOException ex)
+                        {
+                            ChangeStatus(ex.Message);
+                        }
                         progressBar1.Value = 35;
                     }
                 }
@@ -132,7 +192,22 @@ namespace DiscordRemovalTool
                 foreach (string file in dirfiles)
                 {
                     ChangeStatus($"Deleting {file}...");
-                    File.Delete(file);
+                    try
+                    {
+                        File.Delete(file);
+                    }
+                    catch (DirectoryNotFoundException ex)
+                    {
+                        ChangeStatus(ex.Message);
+                    }
+                    catch (FileNotFoundException ex)
+                    {
+                        ChangeStatus(ex.Message);
+                    }
+                    catch (IOException ex)
+                    {
+                        ChangeStatus(ex.Message);
+                    }
                     if (progressBar1.Value < 45) { progressBar1.Value++; }
                 }
             }
@@ -159,12 +234,43 @@ namespace DiscordRemovalTool
                             }
                         }
                         ChangeStatus($"Deleting {dir}");
-                        Directory.Delete(dir, true);
+                        try
+                        {
+                            Directory.Delete(dir, true);
+                        }
+                        catch (DirectoryNotFoundException ex)
+                        {
+                            ChangeStatus(ex.Message);
+                        }
+                        catch (FileNotFoundException ex)
+                        {
+                            ChangeStatus(ex.Message);
+
+                        }
+                        catch (IOException ex)
+                        {
+                            ChangeStatus(ex.Message);
+                        }
                     }
                     else
                     {
                         ChangeStatus($"Deleting {dir} [Empty Directory]");
-                        Directory.Delete(dir, true);
+                        try
+                        {
+                            Directory.Delete(dir, true);
+                        }
+                        catch (DirectoryNotFoundException ex)
+                        {
+                            ChangeStatus(ex.Message);
+                        }
+                        catch (FileNotFoundException ex)
+                        {
+                            ChangeStatus(ex.Message);
+                        }
+                        catch (IOException ex)
+                        {
+                            ChangeStatus(ex.Message);
+                        }
                     }
                 }
             }
@@ -179,12 +285,42 @@ namespace DiscordRemovalTool
                     if (progressBar1.Value < 75) { progressBar1.Value++; }
                 }
                 ChangeStatus($"Deleting {Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Discord"}");
-                Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Discord");
+                try
+                {
+                    Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Discord");
+                }
+                catch (DirectoryNotFoundException ex)
+                {
+                    ChangeStatus(ex.Message);
+                }
+                catch (FileNotFoundException ex)
+                {
+                    ChangeStatus(ex.Message);
+                }
+                catch (IOException ex)
+                {
+                    ChangeStatus(ex.Message);
+                }
                 progressBar1.Value = 75;
             } else
             {
                 ChangeStatus($"Deleting {Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Discord"} [Empty Directory]");
-                Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Discord");
+                try
+                {
+                    Directory.Delete(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Discord");
+                }
+                catch (DirectoryNotFoundException ex)
+                {
+                    ChangeStatus(ex.Message);
+                }
+                catch (FileNotFoundException ex)
+                {
+                    ChangeStatus(ex.Message);
+                }
+                catch (IOException ex)
+                {
+                    ChangeStatus(ex.Message);
+                }
                 progressBar1.Value = 75;
             }
 
@@ -221,7 +357,7 @@ namespace DiscordRemovalTool
             }
 
         }
-        private void startDownload(string downloadUrl)
+        private void startDownload(string downloadUrl) //Starts a new download thread.
         {
             Thread thread = new Thread(() => {
                 WebClient client = new WebClient();
@@ -231,8 +367,10 @@ namespace DiscordRemovalTool
                 client.DownloadFileAsync(new Uri(downloadUrl), DiscordDownloadPath);
             });
             thread.Start();
+            btnUninstall.Enabled = false;
+            btnReinstall.Enabled = false;
         }
-        void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        void client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e) //Method responsible for changing the progress bar while the setup program is downloading.
         {
             this.BeginInvoke((MethodInvoker)delegate {
                 double bytesIn = double.Parse(e.BytesReceived.ToString());
@@ -242,7 +380,7 @@ namespace DiscordRemovalTool
                 progressBar1.Value = int.Parse(Math.Truncate(percentage).ToString());
             });
         }
-        void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        void client_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e) //Runs once DiscordSetup.exe has downloaded successfully.
         {
             this.BeginInvoke((MethodInvoker)delegate {
                 lblStatus.Text = "Completed! Running setup...";
@@ -252,7 +390,21 @@ namespace DiscordRemovalTool
                     DiscordSetup.StartInfo.Verb = "runas";
                     DiscordSetup.Start();
                     DiscordSetup.WaitForExit();
-                    lblStatus.Text = $"Setup exited with code {DiscordSetup.ExitCode}.";
+                    //Check if Discord reinstalled correctly.
+                    if (DiscordSetup.ExitCode == 0)
+                    {
+                        lblStatus.Text = $"Successfully reinstalled Discord!";
+                        lbl_IsDiscordInstalled.ForeColor = Color.Lime;
+                        lbl_IsDiscordInstalled.Text = "YES";
+                    }
+                    else
+                    {
+                        lblStatus.Text = "Failed to reinstall Discord.";
+                        lbl_IsDiscordInstalled.ForeColor = Color.Red;
+                        lbl_IsDiscordInstalled.Text = "NO";
+                    }
+                    
+                    
                 }
             });
 
