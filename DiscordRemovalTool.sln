@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordRemovalTool", "DiscordRemovalTool\DiscordRemovalTool.csproj", "{B80F7098-6BBF-4146-8911-28B85E7E1564}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B80F7098-6BBF-4146-8911-28B85E7E1564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B80F7098-6BBF-4146-8911-28B85E7E1564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B80F7098-6BBF-4146-8911-28B85E7E1564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B80F7098-6BBF-4146-8911-28B85E7E1564}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2CDA68D1-3B3F-4F3A-A9D1-E54C7B760969}
+	EndGlobalSection
+EndGlobal
